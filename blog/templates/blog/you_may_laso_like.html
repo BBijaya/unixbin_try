@@ -1,0 +1,20 @@
+{% load thumbnail %}
+<!-- this page show top 5 page with lowest views -->
+<div class="widget">
+    <h2 class="widget-title">You may also like</h2>
+    <div class="blog-list-widget">
+        <div class="list-group">
+            {% for post in also_like %}
+            <a href="{% url 'post_detail' post.slug %}" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="w-100 justify-content-between">
+                    {% thumbnail post.thumbnail "50x50" crop="center" as im %}
+                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" alt="" class="img-fluid float-left">
+                    {% endthumbnail %}
+                    <h5 class="mb-1">{{ post.title|truncatewords:5 }}</h5>
+                    <small>12 Jan, 2016</small>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div><!-- end blog-list -->
+</div><!-- end widget -->

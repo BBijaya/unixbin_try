@@ -1,0 +1,4 @@
+<h1>hello</h1>
+{% for post in object_list %}
+    {{ post.tags.all|join:"," }}
+{% endfor %}
